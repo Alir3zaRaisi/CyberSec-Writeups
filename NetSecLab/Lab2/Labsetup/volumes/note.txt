@@ -1,0 +1,15 @@
+HOST A
+    IP = 10.9.0.5
+    MAC = 5e:49:4a:eb:96:a7
+HOST B
+    IP = 10.9.0.6
+    MAC = d6:46:d9:88:24:d1
+Attacker
+    IP = 10.9.0.105
+    MAC = fe:5c:27:03:28:22
+
+
+Attack on Telnet 
+    HostA(Client) -> Attacker -> HostB(Server)
+Packets From Client to Server Payload Must be changed 
+Packets From Server to Clinet Payload Must NOT be changed
