@@ -1,36 +1,40 @@
 # ICMP Redirect & MitM Lab – SEED Security Exercises
 
-This project demonstrates two powerful network-level attacks using ICMP redirect and packet manipulation techniques in a Dockerized lab environment, inspired by the SEED Labs framework.
+This project demonstrates two network-layer attacks using Scapy and Docker, based on the SEED Labs environment. The lab includes:
 
-It includes:
+- **Task 1:** ICMP Redirect Attack – rerouting a victim’s traffic to a malicious router using spoofed ICMP messages.
+- **Task 2:** Man-in-the-Middle (MitM) TCP packet manipulation – intercepting and modifying payloads in transit.
 
-- **Task 1:** ICMP Redirect Attack to reroute a victim's traffic through a malicious router.
-- **Task 2:** Man-in-the-Middle (MitM) TCP payload manipulation attack using Scapy.
-- **Analysis Section:** Answers to experimental questions about edge cases, packet direction, and filter strategy.
+It also includes experimental analysis on:
+- Redirecting to external or non-existent hosts
+- MAC vs. IP-based packet filtering
+- Sniffing direction and impact of system-level routing options
 
-## 🛠️ Techniques Covered
+## 🧪 Lab Structure
 
-- ICMP Redirect (Type 5, Code 0) spoofing with Scapy
-- Network-wide redirection using forged gateway suggestions
-- TCP sniff-and-spoof with payload rewriting
-- MAC-based vs IP-based packet filtering
-- Manipulating the Linux routing cache
-- Disabling IP forwarding and using custom forwarding logic
+- ICMP redirects are crafted to change the victim's routing cache.
+- The MitM attack uses Scapy to sniff, modify, and re-inject TCP packets.
+- Netcat is used for simulating TCP communication.
+- Experiments validate attack limitations and best practices.
 
-## 💾 Files Included
+## 📁 Project Structure
 
-- `ICMP_Redirect.pdf`: Full lab report with code, screenshots, and experiment analysis
-- `scripts/`
-  - `ICMP_redirect_inside.py`
-  - `ICMP_redirect_outside.py`
-  - `mitm_sample_mac.py`
-  - `mitm_sample_ip.py`
-- `README.md`: This file
+```
+ICMP-Redirect/
+├── ICMP_Redirect.pdf     # Original SEED lab description
+├── Writup.pdf            # Full report of the lab with code, screenshots, analysis
+├── README.md             # This file
+└── scripts/              # Scapy-based attack scripts
+    ├── ICMP_redirect_inside.py
+    ├── ICMP_redirect_outside.py
+    ├── mitm_sample_ip.py
+    └── mitm_sample_mac.py
+```
 
-## 🔍 Tools Used
+## 🛠️ Tools Used
 
-- Docker Compose
-- Scapy (Python 3)
+- Python 3 + Scapy
+- Docker & Docker Compose
 - Netcat
 - tcpdump, mtr, ip route
 
